@@ -55,8 +55,101 @@
 # - Tip: Complete Part A first, then Parts B and C.
 #
 
-#
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+# YOUR CODE BELOW
 # =============================================================================
 
+def print_matrix(matrix):
+    """Displays a matrix in a neat, aligned grid format."""
+    for row in matrix:
+        print(" ".join(f"{num:4}" for num in row))
+    print()
+
+def input_matrix(rows, cols, name="Matrix"):
+    """Helper function to read a matrix from the user row by row."""
+    print(f"\nEntering values for {name} ({rows}x{cols}):")
+    matrix = []
+    for i in range(rows):
+        while True:
+            row_input = input(f"Enter row {i + 1}: ").split()
+            if len(row_input) == cols:
+                matrix.append([int(x) for x in row_input])
+                break
+            print(f"Error: You must enter exactly {cols} values.")
+    return matrix
+
+def transpose_matrix(matrix):
+    """Computes the transpose of an M x N matrix using nested loops."""
+    rows = len(matrix)
+    cols = len(matrix[0])
+    
+    # Initialize an N x M result matrix with zeros
+    result = [[0] * rows for _ in range(cols)]
+    
+    for r in range(rows):
+        for c in range(cols):
+            result[c][r] = matrix[r][c]
+            
+    return result
+
+def add_matrices(matrix_a, matrix_b):
+    """Computes the element-wise sum of two matrices of the same size."""
+    rows = len(matrix_a)
+    cols = len(matrix_a[0])
+    
+    # Initialize a result matrix with zeros
+    result = [[0] * cols for _ in range(rows)]
+    
+    for r in range(rows):
+        for c in range(cols):
+            result[r][c] = matrix_a[r][c] + matrix_b[r][c]
+            
+    return result
+
+def multiply_matrices(matrix_a, matrix_b):
+    """Multiplies matrix A (M x N) by matrix B (N x P) using a triple-nested loop."""
+    rows_a = len(matrix_a)
+    cols_a = len(matrix_a[0])
+    cols_b = len(matrix_b[0])
+    
+    # Initialize an M x P result matrix with zeros
+    result = [[0] * cols_b for _ in range(rows_a)]
+    
+    for i in range(rows_a):
+        for j in range(cols_b):
+            for k in range(cols_a):
+                result[i][j] += matrix_a[i][k] * matrix_b[k][j]
+                
+    return result
+
+
+# Main execution block demonstrating all parts sequentially
+if __name__ == "__main__":
+    print("--- PART A: Transpose a Matrix ---")
+    r = int(input("Enter number of rows: "))
+    c = int(input("Enter number of columns: "))
+    mat_a = input_matrix(r, c, "Matrix A")
+    
+    print("\nOriginal Matrix:")
+    print_matrix(mat_a)
+    
+    transposed = transpose_matrix(mat_a)
+    print("Transposed Matrix:")
+    print_matrix(transposed)
+    
+    print("--- PART B: Add Two Matrices ---")
+    print(f"Let's enter a second matrix of the same size ({r}x{c}) to add.")
+    mat_b = input_matrix(r, c, "Matrix B")
+    
+    sum_result = add_matrices(mat_a, mat_b)
+    print("\nSum of Matrix A and Matrix B:")
+    print_matrix(sum_result)
+    
+    print("--- PART C: Multiply Two Matrices ---")
+    print(f"Matrix A is currently {r}x{c}. To multiply, Matrix C must have {c} rows.")
+    c_cols = int(input(f"Enter number of columns for Matrix C: "))
+    mat_c = input_matrix(c, c_cols, "Matrix C")
+    
+    product_result = multiply_matrices(mat_a, mat_c)
+    print(f"\nProduct of Matrix A ({r}x{c}) × Matrix C ({c}x{c_cols}):")
+    print_matrix(product_result)
