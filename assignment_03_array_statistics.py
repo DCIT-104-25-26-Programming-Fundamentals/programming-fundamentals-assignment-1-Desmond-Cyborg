@@ -36,6 +36,67 @@
 #
 
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+# YOUR CODE BELOW
 # =============================================================================
 
+def calculate_sum(numbers):
+    """Computes the sum of a list of numbers using a loop."""
+    total = 0
+    for num in numbers:
+        total += num
+    return total
+
+def calculate_average(numbers):
+    """Computes the average of a list of numbers."""
+    if len(numbers) == 0:
+        return 0
+    return calculate_sum(numbers) / len(numbers)
+
+def calculate_maximum(numbers):
+    """Finds the maximum value in a list using a loop."""
+    max_val = numbers[0]
+    for num in numbers:
+        if num > max_val:
+            max_val = num
+    return max_val
+
+def calculate_minimum(numbers):
+    """Finds the minimum value in a list using a loop."""
+    min_val = numbers[0]
+    for num in numbers:
+        if num < min_val:
+            min_val = num
+    return min_val
+
+
+# Main execution block
+if __name__ == "__main__":
+    # Get total count of numbers from the user
+    n = int(input("How many numbers? "))
+    
+    # Requirement: N must be a positive integer
+    if n <= 0:
+        print("Error: The number of elements must be a positive integer.")
+    else:
+        num_list = []
+        
+        # Populate the list with user inputs
+        for i in range(n):
+            val = float(input(f"Enter number {i + 1}: "))
+            # Convert to int if it's a whole number to match example output format cleanly
+            if val.is_integer():
+                val = int(val)
+            num_list.append(val)
+            
+        # Call custom calculation functions
+        total_sum = calculate_sum(num_list)
+        avg = calculate_average(num_list)
+        maximum = calculate_maximum(num_list)
+        minimum = calculate_minimum(num_list)
+        
+        # Print results matching expected output structure
+        print("\nResults:")
+        print(f"Sum:     {total_sum}")
+        print(f"Average: {avg}")
+        print(f"Maximum: {maximum}")
+        print(f"Minimum: {minimum}")
