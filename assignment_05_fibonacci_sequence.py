@@ -44,8 +44,67 @@
 # - Each part must be implemented in its own function (see scaffold below).
 #
 
-#
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+# YOUR CODE BELOW
 # =============================================================================
 
+def get_fibonacci_sequence(n):
+    """
+    Generates the first n terms of the Fibonacci sequence using a loop.
+    Returns a list of numbers.
+    """
+    if n == 1:
+        return [0]
+    
+    sequence = [0, 1]
+    a, b = 0, 1
+    
+    # Loop to calculate terms from index 2 up to n
+    for _ in range(2, n):
+        next_term = a + b
+        sequence.append(next_term)
+        a, b = b, next_term
+        
+    return sequence
+
+def is_fibonacci_number(num):
+    """
+    Checks if a given integer belongs to the Fibonacci sequence using a loop.
+    Returns True if it is a Fibonacci number, False otherwise.
+    """
+    if num < 0:
+        return False
+    if num == 0 or num == 1:
+        return True
+        
+    a, b = 0, 1
+    # Loop and generate until we reach or surpass the target number
+    while b < num:
+        next_term = a + b
+        a = b
+        b = next_term
+        
+    return b == num
+
+
+# Main execution block
+if __name__ == "__main__":
+    print("--- PART A: Print the First N Terms ---")
+    terms_input = int(input("How many terms? "))
+    
+    # Requirement: N must be a positive integer
+    if terms_input <= 0:
+        print("Error: The number of terms must be a positive integer.")
+    else:
+        fib_list = get_fibonacci_sequence(terms_input)
+        # Format list to print on one line separated by spaces
+        print("Fibonacci sequence:", " ".join(map(str, fib_list)))
+        
+    print("\n--- PART B: Check if a Number Belongs to the Sequence ---")
+    check_input = int(input("Enter a number to check: "))
+    
+    # Call the verification function and print the result
+    if is_fibonacci_number(check_input):
+        print(f"{check_input} is a Fibonacci number.")
+    else:
+        print(f"{check_input} is NOT a Fibonacci number.")
