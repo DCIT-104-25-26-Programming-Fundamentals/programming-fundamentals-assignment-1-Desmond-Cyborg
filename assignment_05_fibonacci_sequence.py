@@ -58,8 +58,6 @@ def get_fibonacci_sequence(n):
     
     sequence = [0, 1]
     a, b = 0, 1
-    
-    # Loop to calculate terms from index 2 up to n
     for _ in range(2, n):
         next_term = a + b
         sequence.append(next_term)
@@ -78,7 +76,6 @@ def is_fibonacci_number(num):
         return True
         
     a, b = 0, 1
-    # Loop and generate until we reach or surpass the target number
     while b < num:
         next_term = a + b
         a = b
@@ -86,24 +83,18 @@ def is_fibonacci_number(num):
         
     return b == num
 
-
-# Main execution block
 if __name__ == "__main__":
     print("--- PART A: Print the First N Terms ---")
     terms_input = int(input("How many terms? "))
     
-    # Requirement: N must be a positive integer
     if terms_input <= 0:
         print("Error: The number of terms must be a positive integer.")
     else:
         fib_list = get_fibonacci_sequence(terms_input)
-        # Format list to print on one line separated by spaces
         print("Fibonacci sequence:", " ".join(map(str, fib_list)))
         
     print("\n--- PART B: Check if a Number Belongs to the Sequence ---")
     check_input = int(input("Enter a number to check: "))
-    
-    # Call the verification function and print the result
     if is_fibonacci_number(check_input):
         print(f"{check_input} is a Fibonacci number.")
     else:
