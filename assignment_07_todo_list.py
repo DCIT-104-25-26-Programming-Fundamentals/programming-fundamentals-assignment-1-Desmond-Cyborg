@@ -103,10 +103,7 @@ def delete_task(task_list):
     view_tasks(task_list)
     try:
         task_num = int(input("Enter task number to delete: "))
-        # Convert user index (1-based) to Python tracking index (0-based)
         target_idx = task_num - 1
-        
-        # Validate selection boundaries
         if 0 <= target_idx < len(task_list):
             removed_task = task_list.pop(target_idx)
             print(f'Task "{removed_task}" has been removed.')
@@ -125,8 +122,6 @@ def display_menu():
     print("3. Delete task")
     print("4. Quit")
 
-
-# Main program controller loop
 if __name__ == "__main__":
     todo_list = []
     
