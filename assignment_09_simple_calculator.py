@@ -77,14 +77,11 @@ def multiply(a, b):
     return a * b
 
 def divide(a, b):
-    # Requirement: Handle zero division safely
     if b == 0:
         return "Error: Cannot divide by zero."
-    # Requirement: Round results to 2 decimal places
     return round(a / b, 2)
 
 def modulus(a, b):
-    # Modulus by zero also causes an error in Python, handle it safely
     if b == 0:
         return "Error: Cannot divide by zero."
     return a % b
@@ -104,8 +101,6 @@ def display_menu():
     print("6. Exponentiation")
     print("7. Quit")
 
-
-# Main calculator execution driver loop
 if __name__ == "__main__":
     while True:
         display_menu()
@@ -115,17 +110,14 @@ if __name__ == "__main__":
             print("Goodbye!")
             break
             
-        # Validate that the menu option matches expected inputs before asking for numbers
         if choice in ["1", "2", "3", "4", "5", "6"]:
             try:
                 num1 = float(input("Enter first number : "))
                 num2 = float(input("Enter second number: "))
                 
-                # Convert numbers to integers if they are whole numbers for cleaner output formatting
                 if num1.is_integer(): num1 = int(num1)
                 if num2.is_integer(): num2 = int(num2)
                 
-                # Route calculations and display results matching formatting styles
                 if choice == "1":
                     print(f"Result: {num1} + {num2} = {add(num1, num2)}")
                 elif choice == "2":
