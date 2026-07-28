@@ -49,11 +49,8 @@ def get_grade(score):
     Determines the letter grade based on a score from 0-100.
     Returns the grade character as a string, or None if the score is invalid.
     """
-    # Requirement: Validate that the score is within the range 0-100
     if score < 0 or score > 100:
         return None
-        
-    # Determine the letter grade using if / elif / else sequential logic
     if score >= 80:
         return "A"
     elif score >= 70:
@@ -65,16 +62,11 @@ def get_grade(score):
     else:
         return "F"
 
-
-# Main execution block
 if __name__ == "__main__":
-    # Get user input and convert it to an integer or float
     user_input = float(input("Enter student score (0-100): "))
     
-    # Call the function to calculate the grade
     grade = get_grade(user_input)
     
-    # Requirement: Let main() print the error message if None is returned
     if grade is None:
         print("Error: Score must be between 0 and 100.")
     else:
