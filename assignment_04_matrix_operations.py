@@ -83,7 +83,6 @@ def transpose_matrix(matrix):
     rows = len(matrix)
     cols = len(matrix[0])
     
-    # Initialize an N x M result matrix with zeros
     result = [[0] * rows for _ in range(cols)]
     
     for r in range(rows):
@@ -97,7 +96,6 @@ def add_matrices(matrix_a, matrix_b):
     rows = len(matrix_a)
     cols = len(matrix_a[0])
     
-    # Initialize a result matrix with zeros
     result = [[0] * cols for _ in range(rows)]
     
     for r in range(rows):
@@ -112,7 +110,6 @@ def multiply_matrices(matrix_a, matrix_b):
     cols_a = len(matrix_a[0])
     cols_b = len(matrix_b[0])
     
-    # Initialize an M x P result matrix with zeros
     result = [[0] * cols_b for _ in range(rows_a)]
     
     for i in range(rows_a):
@@ -122,8 +119,6 @@ def multiply_matrices(matrix_a, matrix_b):
                 
     return result
 
-
-# Main execution block demonstrating all parts sequentially
 if __name__ == "__main__":
     print("--- PART A: Transpose a Matrix ---")
     r = int(input("Enter number of rows: "))
