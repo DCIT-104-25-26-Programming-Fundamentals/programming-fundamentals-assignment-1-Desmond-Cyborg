@@ -40,24 +40,19 @@ def is_prime(number):
     Checks if a number is prime.
     Returns True if prime, False otherwise.
     """
-    # Requirement: Numbers less than 2 are NOT prime
     if number < 2:
         return False
         
-    # Check for factors from 2 up to the square root of the number
     for i in range(2, int(number ** 0.5) + 1):
         if number % i == 0:
-            return False  # Found a divisor, so it's not prime
+            return False  
             
-    return True  # No divisors found, it is prime
-
-
-# Main execution block
+    return True  
+    
 if __name__ == "__main__":
-    # Get user input and convert it to an integer
+   
     user_input = int(input("Enter a number: "))
     
-    # Call the function and print the result based on requirement rules
     if is_prime(user_input):
         print(f"{user_input} is a prime number.")
     else:
