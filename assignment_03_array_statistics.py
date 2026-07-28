@@ -68,33 +68,25 @@ def calculate_minimum(numbers):
             min_val = num
     return min_val
 
-
-# Main execution block
 if __name__ == "__main__":
-    # Get total count of numbers from the user
     n = int(input("How many numbers? "))
     
-    # Requirement: N must be a positive integer
     if n <= 0:
         print("Error: The number of elements must be a positive integer.")
     else:
         num_list = []
         
-        # Populate the list with user inputs
         for i in range(n):
             val = float(input(f"Enter number {i + 1}: "))
-            # Convert to int if it's a whole number to match example output format cleanly
             if val.is_integer():
                 val = int(val)
             num_list.append(val)
             
-        # Call custom calculation functions
         total_sum = calculate_sum(num_list)
         avg = calculate_average(num_list)
         maximum = calculate_maximum(num_list)
         minimum = calculate_minimum(num_list)
         
-        # Print results matching expected output structure
         print("\nResults:")
         print(f"Sum:     {total_sum}")
         print(f"Average: {avg}")
