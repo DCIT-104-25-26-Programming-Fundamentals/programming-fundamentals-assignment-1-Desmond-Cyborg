@@ -105,7 +105,6 @@ def add_student(records):
             score = int(score)
         scores_list.append(score)
         
-    # Build dictionary payload matching project structural blueprint
     new_student = {
         "name": name,
         "id": student_id,
@@ -128,7 +127,6 @@ def display_all_students(records):
     for student in records:
         scores_str = ", ".join(map(str, student["scores"]))
         
-        # Safe math fallback handler if a record has no entry inputs
         if len(student["scores"]) > 0:
             avg_score = sum(student["scores"]) / len(student["scores"])
             avg_str = f"{avg_score:.2f}"
@@ -164,8 +162,6 @@ def display_menu():
     print("3. Calculate average score")
     print("4. Quit")
 
-
-# Main driver operational controller loop interface
 if __name__ == "__main__":
     student_database = []
     
